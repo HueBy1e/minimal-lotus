@@ -1,0 +1,407 @@
+/*  Version 0.6.1E (Experimental)
+    github.com/HueBy1e
+    Maintained by @HueByte
+
+— Convert .ttf font to base64       https://transfonter.org/
+— Resources (Ico)                   https://iconify.design/icon-sets/     https://www.flaticon.com/uicons
+— SVG File to SVG Code              https://www.svgminify.com/
+- SVG Code to CSS Code              https://codepen.io/elliz/pen/ygvgay
+
+Arigatō (thanks you) to, for all help & snippets:
+
+@Chetachie        https://www.buymeacoffee.com/chetachi
+@jdanielmourao    https://ko-fi.com/jdanielmourao
+@kepano           https://www.buymeacoffee.com/kepano
+
+/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Root & Variables */
+
+:root {
+    /* FONT SETTINGS */
+    --default-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
+    --editor-font:  Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
+    --text-normal:  Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
+    --font-monospace: ;
+
+    --header-font-pre: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
+    --header-font-ed:  'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
+
+    --heading-bold: 600;
+    --heading-semi-bold: 500;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/ibm-plex-sans-v9-latin-600.eot'); /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/ibm-plex-sans-v9-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/ibm-plex-sans-v9-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/ibm-plex-sans-v9-latin-600.woff') format('woff'), /* Modern Browsers */
+        url('../fonts/ibm-plex-sans-v9-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/ibm-plex-sans-v9-latin-600.svg#IBMPlexSans') format('svg'); /* Legacy iOS */
+}
+
+/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Headings */
+
+/* Headers Font in Preview */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+  font-family: var(--header-font-pre);
+}
+
+/* Headers in Editor Font */
+.cm-s-obsidian .cm-header-1,
+.cm-s-obsidian .cm-header-2,
+.cm-s-obsidian .cm-header-3,
+.cm-s-obsidian .cm-header-4,
+.cm-s-obsidian .cm-header-5,
+.cm-s-obsidian .cm-header-6 {
+  font-family: var(--header-font-ed);
+}
+
+.cm-line,
+.markdown-source-view,  
+.cm-s-obsidian {
+    font-family: var(--editor-font);
+    color: var(--text-normal);
+}
+
+@media (max-width: 320px) {
+  .markdown-preview-view h1,
+.cm-s-obsidian .cm-header-1 {
+    font-size: 2rem;
+    line-height: 1em;
+    font-weight: var(--heading-bold);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+
+    font-size: 2.8em;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .markdown-preview-view h2,
+.cm-s-obsidian .cm-header-2 {
+    font-size: 2rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+  }
+
+  .markdown-preview-view h3,
+.cm-s-obsidian .cm-header-3 {
+    font-size: 1.75rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+
+  .markdown-preview-view h4,
+.cm-s-obsidian .cm-header-4 {
+    font-size: 1.125rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+
+  .markdown-preview-view h5,
+.cm-s-obsidian .cm-header-5 {
+    color: var(--text-normal);
+    font-size: 1rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .markdown-preview-view h6,
+.cm-s-obsidian .cm-header-6 {
+    color: var(--text-normal);
+    font-size: 0.875rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0.16px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 672px) {
+  .markdown-preview-view h1,
+.cm-s-obsidian .cm-header-1 {
+    font-size: 2.625rem;
+    line-height: 1em;
+    font-weight: var(--heading-bold);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+  }
+
+  .markdown-preview-view h2,
+.cm-s-obsidian .cm-header-2 {
+    font-size: 2.25rem;
+    line-height: 1em;
+    font-weight: var(--heading-light);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+  }
+
+  .markdown-preview-view h3,
+.cm-s-obsidian .cm-header-3 {
+    font-size: 1.75rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+
+  .markdown-preview-view h4,
+.cm-s-obsidian .cm-header-4 {
+    font-size: 1.25rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+
+  .markdown-preview-view h5,
+.cm-s-obsidian .cm-header-5 {
+    color: var(--text-normal);
+    font-size: 1rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .markdown-preview-view h6,
+.cm-s-obsidian .cm-header-6 {
+    color: var(--text-normal);
+    font-size: 0.875rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0.16px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+@media (min-width: 673px) and (max-width: 1056px) {
+  .markdown-preview-view h1,
+.cm-s-obsidian .cm-header-1 {
+    font-size: 2.625rem;
+    line-height: 1em;
+    font-weight: var(--heading-bold);
+    letter-spacing: 0px;
+    margin-top: 0.6875em;
+    margin-bottom: 0.6875em;
+  }
+
+  .markdown-preview-view h2,
+.cm-s-obsidian .cm-header-2 {
+    font-size: 2.625rem;
+    line-height: 1em;
+    font-weight: var(--heading-light);
+    letter-spacing: 0px;
+    margin-top: 0.6875em;
+    margin-bottom: 0.6875em;
+  }
+
+  .markdown-preview-view h3,
+.cm-s-obsidian .cm-header-3 {
+    font-size: 1.75rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+  }
+
+  .markdown-preview-view h4,
+.cm-s-obsidian .cm-header-4 {
+    font-size: 1.25rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+  }
+
+  .markdown-preview-view h5,
+.cm-s-obsidian .cm-header-5 {
+    color: var(--text-normal);
+    font-size: 1rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+
+  .markdown-preview-view h6,
+.cm-s-obsidian .cm-header-6 {
+    color: var(--text-normal);
+    font-size: 0.875rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0.16px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+}
+@media (min-width: 1057px) and (max-width: 1312px) {
+  .markdown-preview-view h1,
+.cm-s-obsidian .cm-header-1 {
+    font-size: 3rem;
+    line-height: 1em;
+    font-weight: var(--heading-bold);
+    letter-spacing: 0px;
+    margin-top: 0.6875em;
+    margin-bottom: 0.6875em;
+  }
+
+  .markdown-preview-view h2,
+.cm-s-obsidian .cm-header-2 {
+    font-size: 3rem;
+    line-height: 1em;
+    font-weight: var(--heading-light);
+    letter-spacing: 0px;
+    margin-top: 0.6875em;
+    margin-bottom: 0.6875em;
+  }
+
+  .markdown-preview-view h3,
+.cm-s-obsidian .cm-header-3 {
+    font-size: 2rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+  }
+
+  .markdown-preview-view h4,
+.cm-s-obsidian .cm-header-4 {
+    font-size: 1.25rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+  }
+
+  .markdown-preview-view h5,
+.cm-s-obsidian .cm-header-5 {
+    color: var(--text-normal);
+    font-size: 1rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+
+  .markdown-preview-view h6,
+.cm-s-obsidian .cm-header-6 {
+    color: var(--text-normal);
+    font-size: 0.875rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0.16px;
+    margin-top: 0.5625em;
+    margin-bottom: 0.5625em;
+  }
+}
+
+@media (min-width: 1313px) {
+  .markdown-preview-view h1,
+.cm-s-obsidian .cm-header-1 {
+    font-size: 3rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0px;
+    margin-top: 0.65em;
+    margin-bottom: 0.65em;
+  }
+
+  .markdown-preview-view h2,
+.cm-s-obsidian .cm-header-2 {
+    font-size: 3rem;
+    line-height: 1em;
+    font-weight: var(--heading-light);
+    letter-spacing: 0px;
+    margin-top: 0.65em;
+    margin-bottom: 0.65em;
+  }
+
+  .markdown-preview-view h3,
+.cm-s-obsidian .cm-header-3 {
+    font-size: 2rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.6875em;
+    margin-bottom: 0.6875em;
+  }
+
+  .markdown-preview-view h4,
+.cm-s-obsidian .cm-header-4 {
+    font-size: 1.5rem;
+    line-height: 1em;
+    font-weight: var(--heading-regular);
+    letter-spacing: 0px;
+    margin-top: 0.6875em;
+    margin-bottom: 0.6875em;
+  }
+
+  .markdown-preview-view h5,
+.cm-s-obsidian .cm-header-5 {
+    color: var(--text-normal);
+    font-size: 1rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0px;
+    margin-top: 1.125em;
+    margin-bottom: 1.125em;
+  }
+
+  .markdown-preview-view h6,
+.cm-s-obsidian .cm-header-6 {
+    color: var(--text-normal);
+    font-size: 0.875rem;
+    line-height: 1em;
+    font-weight: var(--heading-semi-bold);
+    letter-spacing: 0.16px;
+    margin-top: 1.125em;
+    margin-bottom: 1.125em;
+  }
+}
+
+/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Better word and character */
+
+body {
+  word-spacing: -0.04rem;
+  letter-spacing: 0.01rem;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

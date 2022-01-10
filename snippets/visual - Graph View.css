@@ -1,0 +1,95 @@
+/*  Version 0.6.1E (Experimental)
+    github.com/HueBy1e
+    Maintained by @HueByte
+
+— Convert .ttf font to base64       https://transfonter.org/
+— Resources (Ico)                   https://iconify.design/icon-sets/     https://www.flaticon.com/uicons
+— SVG File to SVG Code              https://www.svgminify.com/
+- SVG Code to CSS Code              https://codepen.io/elliz/pen/ygvgay
+
+Arigatō (thanks you) to, for all help & snippets:
+
+@Chetachie        https://www.buymeacoffee.com/chetachi
+@jdanielmourao    https://ko-fi.com/jdanielmourao
+@kepano           https://www.buymeacoffee.com/kepano
+
+/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Root & Variables */
+
+.theme-dark {
+    /* GRAPH SETTINGS */
+    --graph-line: #25323c !important;
+    --graph-line-highlight: #EFBC9B !important; 
+    --graph-circle-fill: #CFD2CD !important;
+    --graph-circle-fill-highlight: #ffffff !important; 
+    --graph-circle-fill-unresolved: #55738a !important; 
+    --graph-fill-tag: #CFFF00 !important; 
+
+    --graph-arrow: transparent; 
+    --graph-circle-outline: transparent;
+    --graph-fill-attachment: #CFD2CD  !important;
+} 
+
+.theme-light {
+    /* GRAPH SETTINGS */
+    --graph-line: #f0f0f0 !important;
+    --graph-line-highlight: #EFBC9B !important; 
+    --graph-circle-fill: #CFD2CD !important;
+    --graph-circle-fill-highlight: #ffffff !important; 
+    --graph-circle-fill-unresolved: #CDD5D1 !important; 
+    --graph-fill-tag: #CFFF00 !important; 
+
+    --graph-arrow: transparent; 
+    --graph-circle-outline: transparent;
+    --graph-fill-attachment: #CFD2CD  !important;
+}
+
+/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Graph View (Canvas) */
+
+/* Variable Re-Definitions */
+.graph-view.color-fill-attachment {
+    color: var(--graph-fill-attachment) !important;
+}
+  
+.graph-view.color-fill-unresolved {
+    color: var(--graph-circle-fill-unresolved);
+    opacity: 0.3;
+}
+  
+.graph-view.color-arrow {
+    color: var(--graph-arrow);
+    opacity: 0.7;
+}
+  
+.theme-dark .graph-view.color-line {
+    color: var(--graph-line);
+    opacity: 1;
+}
+  
+.theme-light .graph-view.color-line {
+    color: var(--graph-line);
+    opacity: 0.3;
+}
+  
+.graph-view.color-line-highlight {
+    color: var(--graph-line-highlight);
+}
+  
+.theme-dark .graph-view.color-fill-tag {
+    color: var(--graph-fill-tag);
+}
+  
+.theme-light .graph-view.color-fill-tag {
+    color: var(--graph-fill-tag);
+}
+  
+.graph-view.color-circle {
+    color: var(--graph-circle-outline);
+}
+  
+.graph-view.color-fill {
+    color: var(--graph-circle-fill);
+}
+  
+.graph-view.color-fill-highlight {
+    color: var(--graph-circle-fill-highlight);
+}
