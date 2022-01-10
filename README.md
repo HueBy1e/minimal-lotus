@@ -1,5 +1,5 @@
 # ネ Lotus
-CSS Snippets for Obsidian. Personal adjustments for [Minimal Theme](https://github.com/kepano/obsidian-minimal). U find all 
+CSS Snippets for Obsidian. Personal adjustments for [Minimal Theme](https://github.com/kepano/obsidian-minimal).
 
 ## Installation
 
