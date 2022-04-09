@@ -1,45 +1,29 @@
-/*  Version 0.6.1E (Experimental)
+/*  Version 0.7.1E (Experimental)
     github.com/HueBy1e
     Maintained by @HueByte
 
-— Convert .ttf font to base64       https://transfonter.org/
-— Resources (Ico)                   https://iconify.design/icon-sets/     https://www.flaticon.com/uicons
-— SVG File to SVG Code              https://www.svgminify.com/
-- SVG Code to CSS Code              https://codepen.io/elliz/pen/ygvgay
 
-Arigatō (thanks you) to, for all help & snippets:
+    Arigatō (thanks you) to, for all help & snippets:
 
-@Chetachie        https://www.buymeacoffee.com/chetachi
-@jdanielmourao    https://ko-fi.com/jdanielmourao
-@kepano           https://www.buymeacoffee.com/kepano
+    @Chetachie        https://www.buymeacoffee.com/chetachi
+    @kepano           https://www.buymeacoffee.com/kepano
 
 /* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Root & Variables */
 
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
 :root {
-    /* FONT SETTINGS */
+    /* FONT SETTINGS  */
     --default-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
     --editor-font:  Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
     --text-normal:  Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
     --font-monospace: ;
 
-    --header-font-pre: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
-    --header-font-ed:  'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei Light", sans-serif !important;
+    --header-font-pre: 'Manrope', sans-serif !important;
+    --header-font-ed:  'Manrope', sans-serif !important;
 
-    --heading-bold: 600;
-    --heading-semi-bold: 500;
-}
-
-@font-face {
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../fonts/ibm-plex-sans-v9-latin-600.eot'); /* IE9 Compat Modes */
-    src: local(''),
-        url('../fonts/ibm-plex-sans-v9-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('../fonts/ibm-plex-sans-v9-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
-        url('../fonts/ibm-plex-sans-v9-latin-600.woff') format('woff'), /* Modern Browsers */
-        url('../fonts/ibm-plex-sans-v9-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('../fonts/ibm-plex-sans-v9-latin-600.svg#IBMPlexSans') format('svg'); /* Legacy iOS */
+    --heading-bold: 800;
+    --heading-semi-bold: 400;
 }
 
 /* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Headings */
@@ -72,23 +56,23 @@ Arigatō (thanks you) to, for all help & snippets:
 }
 
 @media (max-width: 320px) {
-  .markdown-preview-view h1,
+.markdown-preview-view h1,
 .cm-s-obsidian .cm-header-1 {
-    font-size: 2rem;
+    font-size: 2rem !important;
     line-height: 1em;
     font-weight: var(--heading-bold);
     letter-spacing: 0px;
     margin-top: 0.625em;
     margin-bottom: 0.625em;
 
-    font-size: 2.8em;
+    font-size: 2.8em !important;
     font-weight: 600;
     text-align: left;
   }
 
-  .markdown-preview-view h2,
+.markdown-preview-view h2,
 .cm-s-obsidian .cm-header-2 {
-    font-size: 2rem;
+    font-size: 1.525rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -96,9 +80,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.625em;
   }
 
-  .markdown-preview-view h3,
+.markdown-preview-view h3,
 .cm-s-obsidian .cm-header-3 {
-    font-size: 1.75rem;
+    font-size: 1.75rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -106,9 +90,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5625em;
   }
 
-  .markdown-preview-view h4,
+.markdown-preview-view h4,
 .cm-s-obsidian .cm-header-4 {
-    font-size: 1.125rem;
+    font-size: 1.125rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -116,10 +100,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5625em;
   }
 
-  .markdown-preview-view h5,
+.markdown-preview-view h5,
 .cm-s-obsidian .cm-header-5 {
     color: var(--text-normal);
-    font-size: 1rem;
+    font-size: 1rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0px;
@@ -127,10 +111,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5em;
   }
 
-  .markdown-preview-view h6,
+.markdown-preview-view h6,
 .cm-s-obsidian .cm-header-6 {
     color: var(--text-normal);
-    font-size: 0.875rem;
+    font-size: 0.875rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0.16px;
@@ -140,9 +124,9 @@ Arigatō (thanks you) to, for all help & snippets:
 }
 
 @media (min-width: 321px) and (max-width: 672px) {
-  .markdown-preview-view h1,
+.markdown-preview-view h1,
 .cm-s-obsidian .cm-header-1 {
-    font-size: 2.625rem;
+    font-size: 2.025rem !important;
     line-height: 1em;
     font-weight: var(--heading-bold);
     letter-spacing: 0px;
@@ -150,9 +134,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.625em;
   }
 
-  .markdown-preview-view h2,
+.markdown-preview-view h2,
 .cm-s-obsidian .cm-header-2 {
-    font-size: 2.25rem;
+    font-size: 1.525rem  !important;
     line-height: 1em;
     font-weight: var(--heading-light);
     letter-spacing: 0px;
@@ -160,9 +144,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.625em;
   }
 
-  .markdown-preview-view h3,
+.markdown-preview-view h3,
 .cm-s-obsidian .cm-header-3 {
-    font-size: 1.75rem;
+    font-size: 1.75rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -170,9 +154,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5625em;
   }
 
-  .markdown-preview-view h4,
+.markdown-preview-view h4,
 .cm-s-obsidian .cm-header-4 {
-    font-size: 1.25rem;
+    font-size: 1.25rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -180,10 +164,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5625em;
   }
 
-  .markdown-preview-view h5,
+.markdown-preview-view h5,
 .cm-s-obsidian .cm-header-5 {
     color: var(--text-normal);
-    font-size: 1rem;
+    font-size: 1rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0px;
@@ -191,10 +175,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5em;
   }
 
-  .markdown-preview-view h6,
+.markdown-preview-view h6,
 .cm-s-obsidian .cm-header-6 {
     color: var(--text-normal);
-    font-size: 0.875rem;
+    font-size: 0.875rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0.16px;
@@ -204,9 +188,9 @@ Arigatō (thanks you) to, for all help & snippets:
 }
 
 @media (min-width: 673px) and (max-width: 1056px) {
-  .markdown-preview-view h1,
+.markdown-preview-view h1,
 .cm-s-obsidian .cm-header-1 {
-    font-size: 2.625rem;
+    font-size: 2.025rem !important;
     line-height: 1em;
     font-weight: var(--heading-bold);
     letter-spacing: 0px;
@@ -214,9 +198,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.6875em;
   }
 
-  .markdown-preview-view h2,
+.markdown-preview-view h2,
 .cm-s-obsidian .cm-header-2 {
-    font-size: 2.625rem;
+    font-size: 1.525rem  !important;
     line-height: 1em;
     font-weight: var(--heading-light);
     letter-spacing: 0px;
@@ -224,9 +208,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.6875em;
   }
 
-  .markdown-preview-view h3,
+.markdown-preview-view h3,
 .cm-s-obsidian .cm-header-3 {
-    font-size: 1.75rem;
+    font-size: 1.75rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -234,9 +218,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.625em;
   }
 
-  .markdown-preview-view h4,
+.markdown-preview-view h4,
 .cm-s-obsidian .cm-header-4 {
-    font-size: 1.25rem;
+    font-size: 1.25rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -244,10 +228,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.625em;
   }
 
-  .markdown-preview-view h5,
+.markdown-preview-view h5,
 .cm-s-obsidian .cm-header-5 {
     color: var(--text-normal);
-    font-size: 1rem;
+    font-size: 1rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0px;
@@ -255,10 +239,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5625em;
   }
 
-  .markdown-preview-view h6,
+.markdown-preview-view h6,
 .cm-s-obsidian .cm-header-6 {
     color: var(--text-normal);
-    font-size: 0.875rem;
+    font-size: 0.875rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0.16px;
@@ -267,9 +251,9 @@ Arigatō (thanks you) to, for all help & snippets:
   }
 }
 @media (min-width: 1057px) and (max-width: 1312px) {
-  .markdown-preview-view h1,
+.markdown-preview-view h1,
 .cm-s-obsidian .cm-header-1 {
-    font-size: 3rem;
+    font-size: 2.025rem !important;
     line-height: 1em;
     font-weight: var(--heading-bold);
     letter-spacing: 0px;
@@ -277,9 +261,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.6875em;
   }
 
-  .markdown-preview-view h2,
+.markdown-preview-view h2,
 .cm-s-obsidian .cm-header-2 {
-    font-size: 3rem;
+    font-size: 1.525rem  !important;
     line-height: 1em;
     font-weight: var(--heading-light);
     letter-spacing: 0px;
@@ -287,9 +271,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.6875em;
   }
 
-  .markdown-preview-view h3,
+.markdown-preview-view h3,
 .cm-s-obsidian .cm-header-3 {
-    font-size: 2rem;
+    font-size: 2rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -297,9 +281,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.625em;
   }
 
-  .markdown-preview-view h4,
+.markdown-preview-view h4,
 .cm-s-obsidian .cm-header-4 {
-    font-size: 1.25rem;
+    font-size: 1.25rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -307,10 +291,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.625em;
   }
 
-  .markdown-preview-view h5,
+.markdown-preview-view h5,
 .cm-s-obsidian .cm-header-5 {
     color: var(--text-normal);
-    font-size: 1rem;
+    font-size: 1rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0px;
@@ -318,10 +302,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.5625em;
   }
 
-  .markdown-preview-view h6,
+.markdown-preview-view h6,
 .cm-s-obsidian .cm-header-6 {
     color: var(--text-normal);
-    font-size: 0.875rem;
+    font-size: 0.875rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0.16px;
@@ -331,9 +315,9 @@ Arigatō (thanks you) to, for all help & snippets:
 }
 
 @media (min-width: 1313px) {
-  .markdown-preview-view h1,
+.markdown-preview-view h1,
 .cm-s-obsidian .cm-header-1 {
-    font-size: 3rem;
+    font-size: 2.025rem !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0px;
@@ -341,9 +325,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.65em;
   }
 
-  .markdown-preview-view h2,
+.markdown-preview-view h2,
 .cm-s-obsidian .cm-header-2 {
-    font-size: 3rem;
+    font-size: 1.525rem  !important;
     line-height: 1em;
     font-weight: var(--heading-light);
     letter-spacing: 0px;
@@ -351,9 +335,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.65em;
   }
 
-  .markdown-preview-view h3,
+.markdown-preview-view h3,
 .cm-s-obsidian .cm-header-3 {
-    font-size: 2rem;
+    font-size: 2rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -361,9 +345,9 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.6875em;
   }
 
-  .markdown-preview-view h4,
+.markdown-preview-view h4,
 .cm-s-obsidian .cm-header-4 {
-    font-size: 1.5rem;
+    font-size: 1.5rem  !important;
     line-height: 1em;
     font-weight: var(--heading-regular);
     letter-spacing: 0px;
@@ -371,10 +355,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 0.6875em;
   }
 
-  .markdown-preview-view h5,
+.markdown-preview-view h5,
 .cm-s-obsidian .cm-header-5 {
     color: var(--text-normal);
-    font-size: 1rem;
+    font-size: 1rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0px;
@@ -382,10 +366,10 @@ Arigatō (thanks you) to, for all help & snippets:
     margin-bottom: 1.125em;
   }
 
-  .markdown-preview-view h6,
+.markdown-preview-view h6,
 .cm-s-obsidian .cm-header-6 {
     color: var(--text-normal);
-    font-size: 0.875rem;
+    font-size: 0.875rem  !important;
     line-height: 1em;
     font-weight: var(--heading-semi-bold);
     letter-spacing: 0.16px;
@@ -394,6 +378,21 @@ Arigatō (thanks you) to, for all help & snippets:
   }
 }
 
+/* H1 Gradient Effect */
+.markdown-preview-view h1,
+.cm-s-obsidian .cm-header-1 {
+  background-image: linear-gradient(45deg, #daa9ec, #d7f8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+/* H2 Thin Effect */
+.markdown-preview-view h2,
+.cm-s-obsidian .cm-header-2 {
+  font-size: 2.2rem;
+}
 /* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Better word and character */
 
 body {
@@ -405,3 +404,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- woff2 font import */
+

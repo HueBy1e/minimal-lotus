@@ -1,38 +1,37 @@
-/*  Version 0.6.1E (Experimental)
+/*  Version 0.7.1E (Experimental)
     github.com/HueBy1e
     Maintained by @HueByte
 
-— Convert .ttf font to base64       https://transfonter.org/
-— Resources (Ico)                   https://iconify.design/icon-sets/     https://www.flaticon.com/uicons
-— SVG File to SVG Code              https://www.svgminify.com/
-- SVG Code to CSS Code              https://codepen.io/elliz/pen/ygvgay
 
-Arigatō (thanks you) to, for all help & snippets:
+    Arigatō (thanks you) to, for all help & snippets:
 
-@Chetachie        https://www.buymeacoffee.com/chetachi
-@jdanielmourao    https://ko-fi.com/jdanielmourao
-@kepano           https://www.buymeacoffee.com/kepano
+    @Chetachie        https://www.buymeacoffee.com/chetachi
+    @kepano           https://www.buymeacoffee.com/kepano
 
 /* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Root & Variables */
 
 .theme-dark {
     /* GRAPH SETTINGS */
-    --graph-line: #25323c !important;
-    --graph-line-highlight: #EFBC9B !important; 
-    --graph-circle-fill: #CFD2CD !important;
+    --graph-line: #c3c1fc !important;
+    --graph-line-highlight: #c3c1fc !important; 
+    --graph-circle-fill: var(--tx2)  !important;
     --graph-circle-fill-highlight: #ffffff !important; 
-    --graph-circle-fill-unresolved: #55738a !important; 
-    --graph-fill-tag: #CFFF00 !important; 
+    --graph-circle-fill-unresolved: var(--tx2) !important; 
+    --graph-fill-tag: #c3c1fc !important; 
 
     --graph-arrow: transparent; 
     --graph-circle-outline: transparent;
-    --graph-fill-attachment: #CFD2CD  !important;
+    --graph-fill-attachment: #3d4044 !important;
+
+    --avty-cell: #1c1e21 !important;
+
+    --tx2: hsl( var(--base-h), calc(var(--base-s) - 20%), calc(var(--base-l) + 45%) );
 } 
 
 .theme-light {
     /* GRAPH SETTINGS */
-    --graph-line: #f0f0f0 !important;
-    --graph-line-highlight: #EFBC9B !important; 
+    --graph-line: #CDD5D1 !important;
+    --graph-line-highlight: #CFFF00 !important; 
     --graph-circle-fill: #CFD2CD !important;
     --graph-circle-fill-highlight: #ffffff !important; 
     --graph-circle-fill-unresolved: #CDD5D1 !important; 
@@ -41,6 +40,8 @@ Arigatō (thanks you) to, for all help & snippets:
     --graph-arrow: transparent; 
     --graph-circle-outline: transparent;
     --graph-fill-attachment: #CFD2CD  !important;
+
+    --avty-cell: #ebedf0 !important;
 }
 
 /* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Graph View (Canvas) */
@@ -54,7 +55,12 @@ Arigatō (thanks you) to, for all help & snippets:
     color: var(--graph-circle-fill-unresolved);
     opacity: 0.3;
 }
-  
+
+.theme-dark .graph-view.color-fill-unresolved {
+    color: var(--graph-circle-fill-unresolved);
+    opacity: 0.3;
+}
+
 .graph-view.color-arrow {
     color: var(--graph-arrow);
     opacity: 0.7;
@@ -88,8 +94,46 @@ Arigatō (thanks you) to, for all help & snippets:
   
 .graph-view.color-fill {
     color: var(--graph-circle-fill);
+    opacity: .75;
 }
   
 .graph-view.color-fill-highlight {
     color: var(--graph-circle-fill-highlight);
+}
+
+/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Plugin Adjustments */
+
+/* Quick Switcher */
+div #quick-explorer {
+    background-color: transparent !important;
+    font-family: Inter;
+    padding-bottom: 2px;
+}
+
+/* Activity Tracker */
+.selectYear {
+    margin: 10px !important;
+    border-radius: 0 !important;
+    border-color: transparent !important;
+    background: transparent !important;
+    font-family: Inter;
+    color: var(--text-bold) !important;
+}
+  
+.HistoryBoard > svg > text {
+    font-family: Inter;
+    fill: var(--text-bold) !important;
+}
+  
+.HistoryBoard > svg > g > text {
+    font-family: Inter;
+    fill: var(--text-bold) !important;
+}
+  
+.dropdown, select {
+    box-shadow: none !important;
+}
+
+.HistoryBoard rect[data-value="0"] {
+    fill: var(--avty-cell);
 }
