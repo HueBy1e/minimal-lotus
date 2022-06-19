@@ -1,67 +1,82 @@
-/*  Version 0.7.1E (Experimental)
-    github.com/HueBy1e
+/*-- — ——————
+
+    Version 0.7.1E (Experimental)
     Maintained by @HueByte
 
-
-    Arigatō (thanks you) to, for all help & snippets:
+    — Arigatō (thanks you) to, for all help:
 
     @Chetachie        https://www.buymeacoffee.com/chetachi
     @kepano           https://www.buymeacoffee.com/kepano
 
-/* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- Root & Variables */
+——————— — --*/
 
 .theme-dark {
-  --titlebar-height: 24px !important; 
-  
-  --text-accent: #c3c1fc !important;
+  /* Variables Override (Fonts) @Minimal */
+  --text: 'Inter';
+  --text-editor: 'Inter';
+  --font-monospace: 'Inter';
+  --font-ui: 'Inter';
+
+  /* Variables Override (Accent Color) @Minimal */
+  --text-accent: #7f6df2 !important;
   --shade-accent: #29212c !important;
   --ax1: var(--text-accent) !important;
   --ax3: var(--text-accent) !important;
+  --tx1: rgb(115, 107, 119);
 
-
+  /* Variables Override (UI) @Minimal */
   --bg-hue: #101114;
   --bg-hue-shift: #101114;
   --bg-hue-shade: #050505;
   --fx-hue: #1c1e21;
 
-  --modal-border: var(--bg-hue);
-  --background-divider: var(--bg-hue-shade) !important;
-
   --background-primary: var(--bg-hue);
   --background-primary-alt: var(--bg-hue);
   --background-secondary: var(--bg-hue);
   --background-secondary-alt: var(--bg-hue);
+  --background-divider: var(--bg-hue-shade) !important;
+  
+  --modal-border: var(--bg-hue);
+  --titlebar-height: 24px !important;
+  --kdb-hue: #1c1e22; 
 
+  /* Variables Gradient (UI)*/
   --color-highlight-text: hsl(225, 12%, 20%);
   --color-highlight-gradient: 
     linear-gradient(60deg,
     #d7f8ff, #d4f0fe, #d1e6fe, #cedcfd, 
     #cbd2fc, #c3c1fc, #c7b9f8, #c7a3ff);
-
-  --kdb-hue: #1c1e22;
 } 
 
 .theme-light {
-  --titlebar-height: 24px !important;
+  /* Variables Override (Fonts) @Minimal */
+  --text: 'Inter';
+  --text-editor: 'Inter';
+  --font-monospace: 'Inter';
+  --font-ui: 'Inter';
 
-  --text-accent: #c3c1fc !important;
+  /* Variables Override (Accent Color) @Minimal */
+  --text-accent: #7f6df2 !important;
   --shade-accent: #29212c !important;
   --ax1: var(--text-accent) !important;
   --ax3: var(--text-accent) !important;
 
+  /* Variables Override (UI) @Minimal */
   --bg-hue: #FAF9F6;
   --background-primary: var(--bg-hue);
   --background-primary-alt: var(--bg-hue);
   --background-secondary: var(--bg-hue);
   --background-secondary-alt: var(--bg-hue);
+  
+  --titlebar-height: 24px !important;
+  --kdb-hue: #d6d6d6;
 
+  /* Variables Gradient (UI)*/
   --color-highlight-text: hsl(225, 12%, 20%);
   --color-highlight-gradient: 
     linear-gradient(60deg,
     #d7f8ff, #d4f0fe, #d1e6fe, #cedcfd, 
     #cbd2fc, #c3c1fc, #c7b9f8, #c7a3ff);
-
-  --kdb-hue: #d6d6d6;
 } 
 
 /* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- UI Elements */
@@ -79,7 +94,13 @@
 
 /* Title Bar @Minimal */
 body:not(.hider-frameless):not(.is-fullscreen):not(.is-mobile) .titlebar {
-  background: var(--bg-hue-shade);
+  background: rgba(0, 0, 0, 0.8); /* var(--bg-hue-shade); */
+}
+
+.titlebar-inner {
+  -webkit-app-region: drag;
+  color: var(--text-muted);
+  width: 100%;
 }
 
 .titlebar .titlebar-text {
@@ -90,19 +111,24 @@ body:not(.hider-frameless):not(.is-fullscreen):not(.is-mobile) .titlebar {
   z-index: 5;
 }
 
+body:not(.window-title-on) .titlebar-text {
+  display: unset;
+}
+
 .titlebar-text {
   display: unset;
   position: absolute;
   font-size: 11px;
-  font-family: Inter;
-  color: var(--text-muted);
-  bottom: 3px;
+  font-weight: 600;
+  color: #4e4e4e;
+  opacity: 1;
+  margin-left: -2vh;
+  top: -2px;
 }
 
 .titlebar .titlebar-text::after {
   z-index: 5;
-  opacity: .8;
-  content: " - https://github.com/HueBy1e/minimal-lotus | ネ Lotus v1.4";
+  content: "  - ネ Lotus v.1.8.3";
 }
 
 .view-action {
@@ -113,25 +139,29 @@ body:not(.hider-frameless):not(.is-fullscreen):not(.is-mobile) .titlebar {
   top: 3px;
 }
 
+.titlebar-button-container.mod-left .titlebar-button {
+  margin-top: 1px; 
+}
+
 
 /* Status Bar @Minimal */
 body:not(.minimal-status-off) div.status-bar {
   position: absolute;
   width: 30%;
-  margin-top: -23px;
-  opacity: .8;
+  margin-top: -22px;
+  opacity: 1;
   right: 120px;
   bottom: unset;
   background-color: transparent;
   border: none;
   border-top: none;
   font-size: 11px;
-  font-family: Inter;
-  color: var(--text-muted)
+  font-weight: 600;
+  color: #4e4e4e;
 }
 
 .nav-buttons-container {
-  padding: 3px 0px 0px 8px;
+  padding: 0px 0px 0px 8px;
 }
 
 .status-bar-item-segment {
@@ -151,22 +181,20 @@ body:not(.minimal-status-off) div.status-bar {
 
 kbd {
   background-color: var(--kdb-hue);
-  color: #c3c1fc;
-}
-
-input.prompt-input {
-  font-family: Inter;
-}
-
-.suggestion-item {
-  font-family: Inter;
+  color: black;
 }
 
 .suggestion-prefix {
   font-weight: 600;
+  text-transform: uppercase;
 }
 
-/* Checkbox */
+input.prompt-input {
+  opacity: 0.225;
+}
+
+
+/* Rounded Checkbox */
 .checkbox-container:after {
   background: var(--bg-hue-shade);
   border: none;
@@ -191,32 +219,88 @@ input.prompt-input {
   display: none;
 }
 
-/* Note Header Title Position */
-.view-header-title-container {
-  padding-left: 6px !important;
-  position: unset !important;
-  font-family: var(--header-font-pre);
+
+/* File Exlorer */
+.is-collapsed .search-result-file-title, .nav-file-title, .nav-folder-title, .tag-pane-tag, .tree-item-self {
+  color: #545556;
 }
 
-.view-header-icon {
-  left: 4px;
+.nav-file-title-content {
+  opacity: 0.5;
+}
+
+
+/* Note Header Title Position */
+.view-header-title-container {
+  position: unset;
 }
 
 .file-embed-title, .markdown-embed-title, .workspace-leaf.mod-active .view-header-title {
-  word-spacing: 2px;
+  opacity: 10%;
+  /* color: var(--text-muted); */
 }
 
-/* File Explorer */
-.nav-folder {
-  font-family: Inter;
+.file-embed-title, .markdown-embed-title, .workspace-leaf.mod-active .view-header-title:hover {
+  opacity: 80%;
+  transition: opacity 0.5s linear;
+}
+
+.view-header, .workspace-leaf.mod-active.mod-active .view-header {
+  border-top: unset;
 }
 
 
-/* Markdown Source View */
-.markdown-source-view.mod-cm6 .cm-scroller {
-  padding-top: 10px !important;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+/* Markdown Source View (Content Container) */
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-contentContainer {
+  margin: 0 0 0 calc(46% - var(--max-width)/ 2)!important;
+}
+
+.markdown-reading-view .markdown-preview-view:not(.is-readable-line-width)>.markdown-preview-sizer {
+  margin: 0 0 0 calc(46% - var(--max-width)/ 2)!important;
+}
+
+
+/* Markdown Source View (Highlights) */
+.cm-s-obsidian span.cm-formatting-highlight, .cm-s-obsidian span.cm-highlight {
+  background-color: #ffc9c9;
+}
+
+.markdown-rendered mark {
+  background-color: #ffc9c9;
+}
+
+
+/* Outliner Mode @LogSeq */
+.cm-gutterElement .is-collapsed .collapse-indicator, .cm-gutterElement:hover .collapse-indicator, 
+.markdown-source-view.mod-cm6 .cm-fold-indicator.is-collapsed .collapse-indicator, 
+.markdown-source-view.mod-cm6 .cm-fold-indicator.is-collapsed .collapse-indicator svg, 
+.markdown-source-view.mod-cm6 .cm-line:hover .cm-fold-indicator .collapse-indicator, 
+.markdown-source-view.mod-cm6 .fold-gutter.is-collapsed, .markdown-source-view.mod-cm6 .fold-gutter:hover {
+  opacity: 0; /* hide arrows */
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1 .cm-fold-indicator .collapse-indicator {
+  right: unset; /* collapse indicator position */
+  left: -6px;
+}
+
+.markdown-source-view.mod-cm6 .is-collapsed~.cm-formatting-list .list-bullet:after, ul>li.is-collapsed::marker {
+  color: #8a8a8a;
+  font-size: 45px;
+  opacity: 30%;
+  margin-top: -1.725vh;
+  margin-left: -6px;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #c5c5c5;
+}
+.markdown-source-view.mod-cm6 .cm-fold-indicator:hover {
+  z-index: unset;
+}
+
+.markdown-source-view.mod-cm6 .cm-formatting-list-ul:hover .list-bullet:after, ul>li.is-collapsed::marker {
+  -webkit-text-stroke-color: #b5b5b5;
+  color: #626262;
+  opacity: 50%;
 }
 
 
@@ -228,7 +312,7 @@ input.prompt-input {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m195.58 27.928c-2.825 1.791-1.7 9.629 1.688 11.75 3.827 2.397 8.066-0.555 8.718-6.072 0.523-4.421-1.679-6.996-5.984-6.996-1.289 0-3.279 0.593-4.422 1.318m-8.903 38.088c-11.276 11.522-22.688 27.245-32.037 44.14-2.853 5.157-5.308 9.561-5.455 9.787-0.147 0.227-5.121-2.867-11.053-6.876-15.104-10.206-41.258-22.557-45.446-21.462-5.5 1.438-11.623 20.622-14.648 45.895-0.978 8.164-1.928 15.005-2.113 15.201-0.185 0.197-8.493-1.703-18.463-4.221-20.499-5.177-41.459-8.318-50.547-7.575l-6.132 0.501-0.466 8.025c-0.954 16.433 10.923 52.926 17.787 54.648 9.834 2.468 10.12-2.493 1.544-26.735-7.978-22.553-7.848-23.316 3.729-22.007 24.711 2.796 58.976 13.349 87.953 27.088l18.36 8.705v11.389c0 20.608 3.586 31.856 10.156 31.856 5.727 0 7.791-3.799 5.758-10.596-0.956-3.196-2.222-9.935-2.813-14.976l-1.074-9.166 3.593 1.923c21.561 11.539 42.351 47.189 46.13 79.101l1.087 9.183-9.602-9.375c-5.281-5.156-13.619-14.843-18.528-21.527-8.029-10.929-9.398-12.107-13.614-11.718-11.494 1.06-4.311 15.49 19.881 39.939l11.262 11.381-9.322-0.976c-65.188-6.826-97.008-24.296-128.38-70.482-7.615-11.209-9.468-13.023-13.302-13.023-9.094 0-7.806 7.364 4.22 24.124 10.761 14.999 11.831 12.691-10.55 22.752-29.926 13.453-27.445 18.008 23.812 43.73 50.858 25.522 100.81 30.336 141.92 13.678l9.855-3.993 9.677 3.97c37.346 15.322 96.432 11.127 133.12-9.45 12.265-6.88 6.633-16.587-6.639-11.443-42.438 16.451-69.29 20.701-98.514 15.594-7.331-1.281-5.797-1.889 11.227-4.444 37.977-5.701 65.113-17.295 85.825-36.671l9.783-9.151 14.523 5.991c7.988 3.295 14.823 6.291 15.19 6.658s-2.856 2.857-7.162 5.534c-7.889 4.904-9.715 8.735-5.954 12.496 5.696 5.696 34.579-10.527 33.761-18.962-0.456-4.701-1.41-5.36-19.6-13.537-21.92-9.853-20.967-8.49-13.154-18.812 21.21-28.024 38.672-71.271 37.428-92.696l-0.466-8.025-6.848-0.49c-8.93-0.64-35.486 3.565-52.85 8.369-7.557 2.091-14.211 3.81-14.787 3.821-0.576 0.01-1.52-4.727-2.097-10.528-2.593-26.065-9.632-49.485-15.321-50.973-4.188-1.095-30.342 11.256-45.446 21.462-5.932 4.009-10.919 7.103-11.083 6.876-0.164-0.226-4.221-7.136-9.016-15.355-10.082-17.281-12.118-19.373-17.532-18.014-6.073 1.524-4.982 7.072 4.477 22.763 41.013 68.031 37.835 120.15-10.332 169.45l-10.801 11.055 0.978-8.594c2.858-25.087 12.764-47.2 28.873-64.449 11.133-11.921 12.518-14.661 9.129-18.051-7.967-7.967-31.253 16.506-42.075 44.219-3.368 8.623-4.5 10.276-5.352 7.812-7.83-22.647-22.528-42.532-42.211-57.109l-13.432-9.948 1.022-7.097c3.964-27.53 26.406-72.846 48.384-97.701l6.89-7.794 3.722 3.497c5.317 4.994 11.76 4.67 13.097-0.66 0.896-3.568-0.076-5.223-6.885-11.718-10.102-9.637-9.899-9.67-23.048 3.765m-74.175 47.66c3.867 2.147 12.422 7.454 19.01 11.793l11.979 7.891-2.828 7.173c-1.555 3.945-4.409 13.624-6.343 21.508l-3.515 14.336-10.324-5.146c-5.677-2.83-14.803-6.831-20.278-8.891l-9.956-3.746 0.948-14.844c0.818-12.818 4.32-30.902 6.745-34.829 1.01-1.636 5.959-0.019 14.562 4.755m192.62 5.201c1.525 5.516 3.208 16.797 3.74 25.068l0.967 15.04-6.083 1.999c-3.346 1.1-12.55 4.996-20.453 8.659l-14.369 6.66-1.832-8.854c-1.007-4.871-3.814-14.466-6.237-21.323-2.422-6.857-3.921-12.838-3.33-13.289 12.08-9.234 40.531-25.412 43.157-24.542 0.917 0.304 2.915 5.066 4.44 10.582m80.822 39.128c0 5.874-10.911 36.173-17.286 48.006-32.397 60.125-69.853 84.563-140.46 91.643l-10.09 1.012 12.541-13.063c26.908-28.028 39.672-54.594 39.672-82.572v-11.938l18.359-8.677c40.3-19.046 97.266-33.343 97.266-24.411m-295.57 131.62c21.133 10.915 34.815 14.772 73.467 20.709 7.389 1.136 5.946 1.705-9.547 3.767-24.228 3.224-54.262-1.882-83.972-14.276-15.711-6.553-46.056-23.04-44.772-24.324 0.418-0.418 7.285-3.452 15.261-6.742l14.501-5.982 10.673 9.882c6.559 6.073 15.961 12.613 24.389 16.966m-87.631 33.976c-3.471 1.973-3.658 10.085-0.262 11.388 1.359 0.522 7.511 0.962 13.671 0.979 27.805 0.076 57.156 6.122 101.36 20.879 66.82 22.307 97.933 22.294 165.31-0.07 44.743-14.852 73.302-20.733 101.04-20.809 14.167-0.039 16.143-0.821 16.143-6.393 0-7.015-3.259-7.76-26.739-6.117-34.342 2.404-53.575 6.54-94.355 20.289-65.972 22.244-89.944 22.249-157.74 0.037-50.156-16.434-107.76-26.251-118.44-20.183' fill-rule='evenodd'/%3e%3c/svg%3e ");
   background-repeat: no-repeat;
   background-size: 400px 200px;
-  opacity: 10%;
+  opacity: 20%;
 }
 
 .empty-state-title {
@@ -244,47 +328,6 @@ input.prompt-input {
 }
 
 
-/* Frontmatter */
-.cm-atom.cm-hmd-frontmatter {
-  font-weight: 550;
-  font-family: Inter;
-  text-transform: uppercase;
-}
-
-.theme-light .cm-string, .theme-light .cm-string-2, .theme-light .token.attr-name, .theme-light .token.builtin,
-.theme-light .token.char, .theme-light .token.inserted, .theme-light .token.selector, .theme-light .token.string {
-  color: var(--text-accent);
-}
-
-.theme-dark .cm-string, .theme-dark .cm-string-2, .theme-dark .token.attr-name, .theme-dark .token.builtin,
-.theme-dark .token.char, .theme-dark .token.inserted, .theme-dark .token.selector, .theme-dark .token.string {
-  color: var(--text-accent);
-}
-
-.theme-dark .cm-number, .theme-dark .token.boolean, .theme-dark .token.number {
-  color: var(--text-muted);
-}
-
-
-/* Settings Modal - Window */
-.vertical-tab-header {
-  background-color: var(--bg-hue-shade) !important;
-}
-
-
-/* Settings Modal - Controls */
-.dropdown {
-  background-color: var(--bg-hue-shift) !important;
-}
-
-.modal button:not(.mod-warning), .modal.mod-settings button:not(.mod-cta):not(.mod-warning), .modal.mod-settings button:not(.mod-warning) {
-  background-color: var(--bg-hue-shift) !important;
-}
-
-.vertical-tab-nav-item {
-  background: var(--bg-hue-shade) !important;
-}
-
 /* Search Result in File Explorer */
 .search-result-file-matched-text {
   color: var(--color-highlight-text);
@@ -295,45 +338,40 @@ input.prompt-input {
   padding-right: 1px;
 }
 
+
 /* Internal Links */
-.cm-s-obsidian span.cm-hmd-internal-link, .markdown-preview-view .internal-link {
-  text-decoration: none;
-
-  /* background: var(--color-highlight-gradient); */
-  font-weight: 600;
-  text-transform: uppercase;
+.markdown-source-view.mod-cm6.is-live-preview .cm-hashtag.cm-meta, .markdown-source-view.mod-cm6 .cm-hmd-internal-link 
+.cm-underline, .markdown-source-view.mod-cm6 .cm-link .cm-underline, .markdown-source-view.mod-cm6 .cm-url .cm-underline {
+  /* text-transform: uppercase; */
+  font-weight: 500;
   font-size: 1em;
-  letter-spacing: 0.125em;
-  border-radius: 4px;
-  color: var(--bg-hue-shade) !important;
+  letter-spacing: 0.0125em;
+  text-decoration: none;
 }
 
-.markdown-source-view.mod-cm6 .cm-underline {
-  text-decoration: unset;
+.cm-hmd-internal-link {
+  color: #b79ced !important;
 }
 
-.cm-underline {
-  /* color: var(--shade-accent); */
-  padding-left: 4px;
-  padding-right: 4px;
+.internal-link {
+  color: #b79ced;
+}
+
+.markdown-rendered .internal-link.is-unresolved {
+  color: #b79ced;
 }
 
 /* External Links */
 .external-link {
   margin-left: 0;
-  
 }
+
 .external-link::after {
   display: none;
 }
 
-/* Bullet Lists */
-.mod-cm6 .HyperMD-list-line .list-bullet::after, .mod-cm6 span.list-bullet::after {
-  color: #c3c1fc;
-}
 
-
-/* External :: Twitter */
+/* External Links :: Twitter */
 .external-link[href*="twitter.com"] {
   position: relative;
   margin-left: 24px;
@@ -341,17 +379,12 @@ input.prompt-input {
   background-image: none;
 }
 
-.external-link[href*="twitter.com"]::after {
+.markdown-preview-view a[href*="twitter.com"]::after {
   content: '';
   display: inline-block;
   background-image: url("data:image/svg+xml,%3Csvg id='icon' fill='hsl(202.8, 89.1%, 53.1%)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:none;%7D%3C/style%3E%3C/defs%3E%3Ctitle%3Elogo--twitter%3C/title%3E%3Cpath d='M11.92,24.94A12.76,12.76,0,0,0,24.76,12.1c0-.2,0-.39,0-.59A9.4,9.4,0,0,0,27,9.18a9.31,9.31,0,0,1-2.59.71,4.56,4.56,0,0,0,2-2.5,8.89,8.89,0,0,1-2.86,1.1,4.52,4.52,0,0,0-7.7,4.11,12.79,12.79,0,0,1-9.3-4.71,4.51,4.51,0,0,0,1.4,6,4.47,4.47,0,0,1-2-.56v.05A4.53,4.53,0,0,0,9.5,17.83a4.53,4.53,0,0,1-2,.08A4.51,4.51,0,0,0,11.68,21,9.05,9.05,0,0,1,6.07,23,9.77,9.77,0,0,1,5,22.91a12.77,12.77,0,0,0,6.92,2' transform='translate(0)'/%3E%3Crect id='_Transparent_Rectangle_' data-name='&lt;Transparent Rectangle&gt;' class='cls-1' width='32' height='32'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   height: 16px;
   width: 16px;
-  position: absolute;
   top: 4px;
-}
-
-.theme-dark .external-link[href*="twitter.com"]::after {
-  background-image: url("data:image/svg+xml,%3Csvg id='icon' fill='hsl(202.8, 89.1%, 53.1%)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:none;%7D%3C/style%3E%3C/defs%3E%3Ctitle%3Elogo--twitter%3C/title%3E%3Cpath d='M11.92,24.94A12.76,12.76,0,0,0,24.76,12.1c0-.2,0-.39,0-.59A9.4,9.4,0,0,0,27,9.18a9.31,9.31,0,0,1-2.59.71,4.56,4.56,0,0,0,2-2.5,8.89,8.89,0,0,1-2.86,1.1,4.52,4.52,0,0,0-7.7,4.11,12.79,12.79,0,0,1-9.3-4.71,4.51,4.51,0,0,0,1.4,6,4.47,4.47,0,0,1-2-.56v.05A4.53,4.53,0,0,0,9.5,17.83a4.53,4.53,0,0,1-2,.08A4.51,4.51,0,0,0,11.68,21,9.05,9.05,0,0,1,6.07,23,9.77,9.77,0,0,1,5,22.91a12.77,12.77,0,0,0,6.92,2' transform='translate(0)'/%3E%3Crect id='_Transparent_Rectangle_' data-name='&lt;Transparent Rectangle&gt;' class='cls-1' width='32' height='32'/%3E%3C/svg%3E");
 }

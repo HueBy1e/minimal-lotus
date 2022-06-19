@@ -1,0 +1,66 @@
+/*-- — ——————
+
+    Version 0.7.1E (Experimental)
+    Maintained by @HueByte
+
+    — Arigatō (thanks you) to, for all help:
+
+    @Chetachie        https://www.buymeacoffee.com/chetachi
+    @kepano           https://www.buymeacoffee.com/kepano
+
+——————— — --*/
+
+/* Bold */
+.cm-s-obsidian .cm-strong, strong {
+    font-weight: 600;
+    color: #E4E5E6;
+}
+
+.cm-strong, .markdown-preview-view strong, .callout strong {
+    font-weight: 600  !important;
+}
+
+/* Media Querys - Headings L1-3 */
+@media (min-width: 1px) and (max-width: 2800px) {
+    .markdown-preview-view h1,
+    .cm-s-obsidian .cm-header-1 {
+        font-size: 2.441rem !important;
+        font-weight: 600;
+        color: #acb6e5;
+    }
+
+    .markdown-preview-view h2,
+    .cm-s-obsidian .cm-header-2 {
+        font-size: 1.953rem !important;
+        font-weight: 500;
+        color: #acb6e5;
+    }
+
+    .markdown-preview-view h3,
+    .cm-s-obsidian .cm-header-3 {
+        font-size: 1.563rem !important;
+        font-weight: 500;
+        color: #acb6e5;
+    }
+
+    .markdown-preview-view h4,
+    .cm-s-obsidian .cm-header-4 {
+        /* font-size: 1.563rem !important; */
+        font-weight: 500;
+        color: #acb6e5;
+    }
+
+    .markdown-preview-view h5,
+    .cm-s-obsidian .cm-header-5 {
+        /* font-size: 1.563rem !important; */
+        font-weight: 500;
+        color: #acb6e5;
+    }
+
+    .markdown-preview-view h6,
+    .cm-s-obsidian .cm-header-6 {
+        /* font-size: 1.563rem !important; */
+        font-weight: 500;
+        color: #acb6e5;
+    }
+}
