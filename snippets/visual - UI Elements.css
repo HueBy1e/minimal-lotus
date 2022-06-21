@@ -1,6 +1,6 @@
 /*-- — ——————
 
-    Version 0.7.1E (Experimental)
+    Version 1.8.4E (Experimental)
     Maintained by @HueByte
 
     — Arigatō (thanks you) to, for all help:
@@ -19,14 +19,15 @@
 
   /* Variables Override (Accent Color) @Minimal */
   --text-accent: #7f6df2 !important;
+  --text-shade: #535e84 !important;
   --shade-accent: #29212c !important;
   --ax1: var(--text-accent) !important;
   --ax3: var(--text-accent) !important;
   --tx1: rgb(115, 107, 119);
 
   /* Variables Override (UI) @Minimal */
-  --bg-hue: #101114;
-  --bg-hue-shift: #101114;
+  --bg-hue: #161616; /* 21222c */
+  --bg-hue-shift: #161616;
   --bg-hue-shade: #050505;
   --fx-hue: #1c1e21;
 
@@ -46,6 +47,18 @@
     linear-gradient(60deg,
     #d7f8ff, #d4f0fe, #d1e6fe, #cedcfd, 
     #cbd2fc, #c3c1fc, #c7b9f8, #c7a3ff);
+
+  /* GRAPH Variables */
+  --graph-line: #c3c1fc !important;
+  --graph-line-highlight: #c3c1fc !important; 
+  --graph-circle-fill: var(--tx2)  !important;
+  --graph-circle-fill-highlight: #ffffff !important; 
+  --graph-circle-fill-unresolved: var(--tx2) !important; 
+  --graph-fill-tag: #c3c1fc !important; 
+
+  --graph-arrow: transparent; 
+  --graph-circle-outline: transparent;
+  --graph-fill-attachment: #3d4044 !important;
 } 
 
 .theme-light {
@@ -77,6 +90,18 @@
     linear-gradient(60deg,
     #d7f8ff, #d4f0fe, #d1e6fe, #cedcfd, 
     #cbd2fc, #c3c1fc, #c7b9f8, #c7a3ff);
+
+  /* GRAPH Variables */
+  --graph-line: #CDD5D1 !important;
+  --graph-line-highlight: #CFFF00 !important; 
+  --graph-circle-fill: #CFD2CD !important;
+  --graph-circle-fill-highlight: #ffffff !important; 
+  --graph-circle-fill-unresolved: #CDD5D1 !important; 
+  --graph-fill-tag: #CFFF00 !important; 
+
+  --graph-arrow: transparent; 
+  --graph-circle-outline: transparent;
+  --graph-fill-attachment: #CFD2CD  !important;
 } 
 
 /* -- — ————————————————————————————————————————————————————————————————————————————————————— — - -- UI Elements */
@@ -94,7 +119,7 @@
 
 /* Title Bar @Minimal */
 body:not(.hider-frameless):not(.is-fullscreen):not(.is-mobile) .titlebar {
-  background: rgba(0, 0, 0, 0.8); /* var(--bg-hue-shade); */
+  background: #0F0F0F; /* rgba(0, 0, 0, 0.8) */
 }
 
 .titlebar-inner {
@@ -119,16 +144,17 @@ body:not(.window-title-on) .titlebar-text {
   display: unset;
   position: absolute;
   font-size: 11px;
-  font-weight: 600;
-  color: #4e4e4e;
+  font-weight: 00;
   opacity: 1;
   margin-left: -2vh;
   top: -2px;
+  color: var(--text-muted);
 }
 
 .titlebar .titlebar-text::after {
   z-index: 5;
-  content: "  - ネ Lotus v.1.8.3";
+  content: "  - ネ Lotus v.1.8.4E";
+  color: var(--text-shade);
 }
 
 .view-action {
@@ -157,7 +183,8 @@ body:not(.minimal-status-off) div.status-bar {
   border-top: none;
   font-size: 11px;
   font-weight: 600;
-  color: #4e4e4e;
+  color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 .nav-buttons-container {
@@ -229,6 +256,10 @@ input.prompt-input {
   opacity: 0.5;
 }
 
+.is-collapsed .search-result-file-title, .nav-file-title, .nav-folder-title, .tag-pane-tag, .tree-item-self {
+  color: var(--text-shade);
+}
+
 
 /* Note Header Title Position */
 .view-header-title-container {
@@ -275,32 +306,119 @@ input.prompt-input {
 .markdown-source-view.mod-cm6 .cm-fold-indicator.is-collapsed .collapse-indicator, 
 .markdown-source-view.mod-cm6 .cm-fold-indicator.is-collapsed .collapse-indicator svg, 
 .markdown-source-view.mod-cm6 .cm-line:hover .cm-fold-indicator .collapse-indicator, 
-.markdown-source-view.mod-cm6 .fold-gutter.is-collapsed, .markdown-source-view.mod-cm6 .fold-gutter:hover {
+.markdown-source-view.mod-cm6 .fold-gutter.is-collapsed, .markdown-source-view.mod-cm6 .fold-gutter:hover,
+.markdown-reading-view li .collapse-indicator {
   opacity: 0; /* hide arrows */
 }
 
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1 .cm-fold-indicator .collapse-indicator {
+.markdown-source-view.mod-cm6 .HyperMD-list-line .cm-fold-indicator {
+  min-width: 22px;
+  margin-inline-end: -22px;
+  left: -13px;
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line .cm-fold-indicator .collapse-indicator {
   right: unset; /* collapse indicator position */
-  left: -6px;
+  left: -12px;
 }
 
-.markdown-source-view.mod-cm6 .is-collapsed~.cm-formatting-list .list-bullet:after, ul>li.is-collapsed::marker {
+.HyperMD-list-line, .markdown-reading-view ul > li:not(.task-list-item) {
+  position: relative;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li.is-collapsed:not(.task-list-item)::before,
+.markdown-source-view.mod-cm6 .is-collapsed ~ .cm-formatting-list-ul .list-bullet:after,
+.cm-fold-indicator:hover ~ .cm-formatting-list-ul > .list-bullet:after {
   color: #8a8a8a;
   font-size: 45px;
   opacity: 30%;
-  margin-top: -1.725vh;
-  margin-left: -6px;
+  margin-top: -2.2vh;
+  margin-left: -4px;
   -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: #c5c5c5;
+  line-height: 1em;
+  top: 5.5%;
 }
 .markdown-source-view.mod-cm6 .cm-fold-indicator:hover {
-  z-index: unset;
+  z-index: 1;
 }
 
-.markdown-source-view.mod-cm6 .cm-formatting-list-ul:hover .list-bullet:after, ul>li.is-collapsed::marker {
-  -webkit-text-stroke-color: #b5b5b5;
-  color: #626262;
-  opacity: 50%;
+.markdown-reading-view .markdown-preview-section ul > li:not(.task-list-item)::before {
+  content: "•";
+  position: absolute;
+  line-height: .95em;
+  font-size: 1.4em;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  vertical-align: middle;
+  left: -0.66em;
+  margin-left: 0px;
+  opacity: 30%;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li.is-collapsed::before {
+  left: -0.35em;
+  margin-top: -0.3em;
+}
+
+/* hover states */
+.markdown-source-view.mod-cm6 .HyperMD-list-line.cm-line:hover > .cm-fold-indicator.is-collapsed {
+  left: -10px;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li:not(.task-list-item)::marker{
+  content: "";
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 3px;
+  font-size: 51px;
+  line-height: 0.4em;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li.is-collapsed:not(.task-list-item):hover::before,
+.markdown-source-view.mod-cm6 .HyperMD-list-line .is-collapsed:hover ~ .cm-formatting-list .list-bullet:after {
+  -webkit-text-stroke-width: 3px;
+  font-size: 51px;
+  margin-left: -5px;
+  margin-top: calc(-2.2vh - 4px);
+  color: #8f8f8f;
+  -webkit-text-stroke-color: #565656;
+  opacity: 1;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li.is-collapsed:not(.task-list-item):hover::before {
+  margin-left: -3px;
+  margin-top: -0.34em;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li.is-collapsed:not(.task-list-item)::before {
+  margin-top: -0.30em;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li:not(.task-list-item) > .collapse-indicator {
+  opacity: 1;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li:not(.task-list-item) > .collapse-indicator > svg {
+  opacity: 0;
+}
+
+.markdown-reading-view .markdown-preview-section ul > li:not(.task-list-item,.is-collapsed) > .collapse-indicator:hover::after {
+  content: "•";
+  position: absolute;
+  line-height: .95em;
+  vertical-align: middle;
+  right: -0.5px;
+  opacity: 1;
+  color: #444444;
+  font-size: 45px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  margin-top: -2.7125vh;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #565656;
+  line-height: 1em;
+  top: 8%;
+}
+
+ul > li {
+  padding-left: 2px;
 }
 
 
@@ -312,7 +430,7 @@ input.prompt-input {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m195.58 27.928c-2.825 1.791-1.7 9.629 1.688 11.75 3.827 2.397 8.066-0.555 8.718-6.072 0.523-4.421-1.679-6.996-5.984-6.996-1.289 0-3.279 0.593-4.422 1.318m-8.903 38.088c-11.276 11.522-22.688 27.245-32.037 44.14-2.853 5.157-5.308 9.561-5.455 9.787-0.147 0.227-5.121-2.867-11.053-6.876-15.104-10.206-41.258-22.557-45.446-21.462-5.5 1.438-11.623 20.622-14.648 45.895-0.978 8.164-1.928 15.005-2.113 15.201-0.185 0.197-8.493-1.703-18.463-4.221-20.499-5.177-41.459-8.318-50.547-7.575l-6.132 0.501-0.466 8.025c-0.954 16.433 10.923 52.926 17.787 54.648 9.834 2.468 10.12-2.493 1.544-26.735-7.978-22.553-7.848-23.316 3.729-22.007 24.711 2.796 58.976 13.349 87.953 27.088l18.36 8.705v11.389c0 20.608 3.586 31.856 10.156 31.856 5.727 0 7.791-3.799 5.758-10.596-0.956-3.196-2.222-9.935-2.813-14.976l-1.074-9.166 3.593 1.923c21.561 11.539 42.351 47.189 46.13 79.101l1.087 9.183-9.602-9.375c-5.281-5.156-13.619-14.843-18.528-21.527-8.029-10.929-9.398-12.107-13.614-11.718-11.494 1.06-4.311 15.49 19.881 39.939l11.262 11.381-9.322-0.976c-65.188-6.826-97.008-24.296-128.38-70.482-7.615-11.209-9.468-13.023-13.302-13.023-9.094 0-7.806 7.364 4.22 24.124 10.761 14.999 11.831 12.691-10.55 22.752-29.926 13.453-27.445 18.008 23.812 43.73 50.858 25.522 100.81 30.336 141.92 13.678l9.855-3.993 9.677 3.97c37.346 15.322 96.432 11.127 133.12-9.45 12.265-6.88 6.633-16.587-6.639-11.443-42.438 16.451-69.29 20.701-98.514 15.594-7.331-1.281-5.797-1.889 11.227-4.444 37.977-5.701 65.113-17.295 85.825-36.671l9.783-9.151 14.523 5.991c7.988 3.295 14.823 6.291 15.19 6.658s-2.856 2.857-7.162 5.534c-7.889 4.904-9.715 8.735-5.954 12.496 5.696 5.696 34.579-10.527 33.761-18.962-0.456-4.701-1.41-5.36-19.6-13.537-21.92-9.853-20.967-8.49-13.154-18.812 21.21-28.024 38.672-71.271 37.428-92.696l-0.466-8.025-6.848-0.49c-8.93-0.64-35.486 3.565-52.85 8.369-7.557 2.091-14.211 3.81-14.787 3.821-0.576 0.01-1.52-4.727-2.097-10.528-2.593-26.065-9.632-49.485-15.321-50.973-4.188-1.095-30.342 11.256-45.446 21.462-5.932 4.009-10.919 7.103-11.083 6.876-0.164-0.226-4.221-7.136-9.016-15.355-10.082-17.281-12.118-19.373-17.532-18.014-6.073 1.524-4.982 7.072 4.477 22.763 41.013 68.031 37.835 120.15-10.332 169.45l-10.801 11.055 0.978-8.594c2.858-25.087 12.764-47.2 28.873-64.449 11.133-11.921 12.518-14.661 9.129-18.051-7.967-7.967-31.253 16.506-42.075 44.219-3.368 8.623-4.5 10.276-5.352 7.812-7.83-22.647-22.528-42.532-42.211-57.109l-13.432-9.948 1.022-7.097c3.964-27.53 26.406-72.846 48.384-97.701l6.89-7.794 3.722 3.497c5.317 4.994 11.76 4.67 13.097-0.66 0.896-3.568-0.076-5.223-6.885-11.718-10.102-9.637-9.899-9.67-23.048 3.765m-74.175 47.66c3.867 2.147 12.422 7.454 19.01 11.793l11.979 7.891-2.828 7.173c-1.555 3.945-4.409 13.624-6.343 21.508l-3.515 14.336-10.324-5.146c-5.677-2.83-14.803-6.831-20.278-8.891l-9.956-3.746 0.948-14.844c0.818-12.818 4.32-30.902 6.745-34.829 1.01-1.636 5.959-0.019 14.562 4.755m192.62 5.201c1.525 5.516 3.208 16.797 3.74 25.068l0.967 15.04-6.083 1.999c-3.346 1.1-12.55 4.996-20.453 8.659l-14.369 6.66-1.832-8.854c-1.007-4.871-3.814-14.466-6.237-21.323-2.422-6.857-3.921-12.838-3.33-13.289 12.08-9.234 40.531-25.412 43.157-24.542 0.917 0.304 2.915 5.066 4.44 10.582m80.822 39.128c0 5.874-10.911 36.173-17.286 48.006-32.397 60.125-69.853 84.563-140.46 91.643l-10.09 1.012 12.541-13.063c26.908-28.028 39.672-54.594 39.672-82.572v-11.938l18.359-8.677c40.3-19.046 97.266-33.343 97.266-24.411m-295.57 131.62c21.133 10.915 34.815 14.772 73.467 20.709 7.389 1.136 5.946 1.705-9.547 3.767-24.228 3.224-54.262-1.882-83.972-14.276-15.711-6.553-46.056-23.04-44.772-24.324 0.418-0.418 7.285-3.452 15.261-6.742l14.501-5.982 10.673 9.882c6.559 6.073 15.961 12.613 24.389 16.966m-87.631 33.976c-3.471 1.973-3.658 10.085-0.262 11.388 1.359 0.522 7.511 0.962 13.671 0.979 27.805 0.076 57.156 6.122 101.36 20.879 66.82 22.307 97.933 22.294 165.31-0.07 44.743-14.852 73.302-20.733 101.04-20.809 14.167-0.039 16.143-0.821 16.143-6.393 0-7.015-3.259-7.76-26.739-6.117-34.342 2.404-53.575 6.54-94.355 20.289-65.972 22.244-89.944 22.249-157.74 0.037-50.156-16.434-107.76-26.251-118.44-20.183' fill-rule='evenodd'/%3e%3c/svg%3e ");
   background-repeat: no-repeat;
   background-size: 400px 200px;
-  opacity: 20%;
+  opacity: 10%;
 }
 
 .empty-state-title {
@@ -387,4 +505,62 @@ input.prompt-input {
   height: 16px;
   width: 16px;
   top: 4px;
+}
+
+
+
+
+/* Graph - Variable Re-Definitions */
+.graph-view.color-fill-attachment {
+  color: var(--graph-fill-attachment) !important;
+}
+
+.graph-view.color-fill-unresolved {
+  color: var(--graph-circle-fill-unresolved);
+  opacity: 0.3;
+}
+
+.theme-dark .graph-view.color-fill-unresolved {
+  color: var(--graph-circle-fill-unresolved);
+  opacity: 0.3;
+}
+
+.graph-view.color-arrow {
+  color: var(--graph-arrow);
+  opacity: 0.7;
+}
+
+.theme-dark .graph-view.color-line {
+  color: var(--graph-line);
+  opacity: 1;
+}
+
+.theme-light .graph-view.color-line {
+  color: var(--graph-line);
+  opacity: 0.3;
+}
+
+.graph-view.color-line-highlight {
+  color: var(--graph-line-highlight);
+}
+
+.theme-dark .graph-view.color-fill-tag {
+  color: var(--graph-fill-tag);
+}
+
+.theme-light .graph-view.color-fill-tag {
+  color: var(--graph-fill-tag);
+}
+
+.graph-view.color-circle {
+  color: var(--graph-circle-outline);
+}
+
+.graph-view.color-fill {
+  color: var(--graph-circle-fill);
+  opacity: .75;
+}
+
+.graph-view.color-fill-highlight {
+  color: var(--graph-circle-fill-highlight);
 }
